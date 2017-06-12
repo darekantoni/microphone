@@ -59,7 +59,7 @@ analyzer.fftSize = 256;
 var frequencies = new Uint8Array( analyzer.frequencyBinCount );
 var times = new Uint8Array( analyzer.frequencyBinCount );
 
-navigator.getUserMedia ( { audio: true }, microphoneReady );
+navigator.getUserMedia ( { audio: true }, microphoneReady, microphoneError );
 
 function microphoneReady( stream )
 {
@@ -67,6 +67,11 @@ function microphoneReady( stream )
 	stream_source.connect( analyzer );
 	loop();
 }
+
+function microphoneError(err) {
+	alert(err);
+};
+
 
 function loop()
 {
