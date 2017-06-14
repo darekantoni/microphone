@@ -1,9 +1,4 @@
-
-
 'use strict';
-
-
-
 
 // SPEECH RECOGNITION
 var recognition;
@@ -12,23 +7,26 @@ var text_el = document.getElementById( 'text' );
 if ( 'webkitSpeechRecognition' in window )
 {
   recognition = new webkitSpeechRecognition();
+  alert( 'SpeechRecognion Recognized' );
   recognition.continuous = true;
   recognition.interimResults = true;
   recognition.addEventListener( 'start', recognitionStarted );
   recognition.addEventListener( 'end', recognitionEnded );
   recognition.addEventListener( 'result', recognitionTalked );
-  recognition.addEventListener( 'error', function ( error ){ console.log( error ); } );
+  recognition.addEventListener( 'error', function ( error ){ console.log( error ); alert( 'errorSpeechRecognion' ); } );
   recognition.start();
 }
 
 function recognitionStarted ()
 {
   console.log( 'recognition started' );
+  alert( 'recognition started' );
 }
 
 function recognitionEnded ()
 {
   console.log( 'recognition stopped' );
+  alert( 'recognition stopped' );
 }
 
 function recognitionTalked ( event )
@@ -49,11 +47,11 @@ function recognitionTalked ( event )
   }
 }
 
-window.AudioContext = window.AudioContext || window.webkitAudioContext;
+window.AudioContext = window.webkitAudioContext || window.AudioContext;
 
 var volume_el = document.getElementById( 'volume' );
 var stream;
-var ctx = new AudioContext();
+var ctx = new webkitAudioContext();
 var analyzer = ctx.createAnalyser();
 analyzer.smoothingTimeConstant = 0.18;
 analyzer.fftSize = 256;
