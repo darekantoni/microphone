@@ -4,8 +4,8 @@
 var recognition;
 var text_el = document.getElementById( 'text' );
 
-if ( 'webkitSpeechRecognition' in window )
-{
+//if ( 'webkitSpeechRecognition' in window )
+//{
   recognition = new webkitSpeechRecognition();
   alert( 'SpeechRecognion Recognized' );
   recognition.continuous = true;
@@ -15,7 +15,7 @@ if ( 'webkitSpeechRecognition' in window )
   recognition.addEventListener( 'result', recognitionTalked );
   recognition.addEventListener( 'error', function ( error ){ console.log( error ); alert( 'errorSpeechRecognion' ); } );
   recognition.start();
-}
+//}
 
 function recognitionStarted ()
 {
